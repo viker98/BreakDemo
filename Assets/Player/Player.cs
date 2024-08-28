@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GamePlayWidget gameplayWidgetPrefab;
     [SerializeField] private float speed;
+    [SerializeField] ViewCamera viewCameraPrefab;
 
     private GamePlayWidget _gameplayWidget;
 
     private CharacterController _characterController;
     private Animator _animator;
+    private ViewCamera _viewCamera;
 
     private Vector2 _moveInput;
     private void Awake()
@@ -22,7 +24,8 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _gameplayWidget = Instantiate(gameplayWidgetPrefab);
         _gameplayWidget.MoveStick.OnInputUpdated += InputUpdated;
-        Application.targetFrameRate = 60;
+        _viewCamera = Instantiate(viewCameraPrefab);
+        _viewCamera.SetFollorParent(transform);
     }
 
     private void InputUpdated(Vector2 inputVal)
