@@ -61,11 +61,25 @@ public class Player : MonoBehaviour
             _viewCamera.AddYawInput(_moveInput.x);
         }
 
-
+        float angleDelta = 0f;
         if (aimDir != Vector3.zero)
         {
+            Vector3 prevDir = transform.forward;
             Quaternion goatRot = Quaternion.LookRotation(aimDir, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, goatRot, Time.deltaTime * bodyRotationSpeed);
+            angleDelta = Vector3.SignedAngle(transform.forward, prevDir, Vector3.up);
+
         }
+
+        _animator.SetFloat("Turn Amount", angleDelta / Time.deltaTime);
+
+
+        float animFwdAmt = Vector3.Dot(moveDir, transform.forward);
+        float animRightAmt = Vector3.Dot(moveDir,transform.right);
+        
+        
+        _animator.SetFloat("Forward Amount", animFwdAmt);
+        _animator.SetFloat("RightAmount", animRightAmt);
+
     }
 }

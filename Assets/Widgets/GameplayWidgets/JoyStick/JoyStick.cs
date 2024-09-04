@@ -10,6 +10,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     [SerializeField] private RectTransform rangeTransform;
     [SerializeField] private RectTransform thumbStickTransform;
     [SerializeField] private RectTransform CenterTransform;
+    [SerializeField] private float deadZone = 0.2f;
 
     private float _range;
 
@@ -32,8 +33,15 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 offset = eventData.position - eventData.pressPosition;
+        
         offset = Vector2.ClampMagnitude(offset, _range);
         thumbStickTransform.position = eventData.pressPosition + offset;
+        Vector2 input = offset/_range;
+        if (input.sqrMagnitude < deadZone)
+        {
+            return;
+        }
+
         OnInputUpdated.Invoke(offset/_range);
     }
 
