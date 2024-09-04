@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _aimInput;
 
+    static int animFwdId = Animator.StringToHash("Forward Amount");
+    static int animRightId = Animator.StringToHash("RightAmount");
+    static int animTurnId = Animator.StringToHash("Turn Amount");
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -71,15 +75,15 @@ public class Player : MonoBehaviour
 
         }
 
-        _animator.SetFloat("Turn Amount", angleDelta / Time.deltaTime);
+        _animator.SetFloat(animTurnId, angleDelta / Time.deltaTime);
 
 
         float animFwdAmt = Vector3.Dot(moveDir, transform.forward);
         float animRightAmt = Vector3.Dot(moveDir,transform.right);
         
         
-        _animator.SetFloat("Forward Amount", animFwdAmt);
-        _animator.SetFloat("RightAmount", animRightAmt);
+        _animator.SetFloat(animFwdId, animFwdAmt);
+        _animator.SetFloat(animRightId, animRightAmt);
 
     }
 }

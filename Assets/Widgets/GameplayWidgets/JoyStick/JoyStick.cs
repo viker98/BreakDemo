@@ -17,6 +17,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private void Awake()
     {
         _range = rangeTransform.sizeDelta.x / 2;
+        deadZone = deadZone * deadZone;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
