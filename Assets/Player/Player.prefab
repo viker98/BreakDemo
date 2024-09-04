@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayWidgetPrefab: {fileID: -4978909712992278206, guid: 3074d41e78969444aa9251822789af1b, type: 3}
   speed: 10
+  bodyRotationSpeed: 10
   viewCameraPrefab: {fileID: 5574752659470165821, guid: 547c17dceb618c544b5b53e59b429639, type: 3}
 --- !u!143 &6598862466835719701
 CharacterController:
