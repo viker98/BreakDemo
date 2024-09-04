@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,14 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GamePlayWidget gameplayWidgetPrefab;
     [SerializeField] private float speed;
     [SerializeField] ViewCamera viewCameraPrefab;
-
     private GamePlayWidget _gameplayWidget;
-
     private CharacterController _characterController;
-    private Animator _animator;
     private ViewCamera _viewCamera;
 
+    private Animator _animator;
     private Vector2 _moveInput;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _characterController.Move(new Vector3(_moveInput.x,0,_moveInput.y) * speed * Time.deltaTime);
+        Vector3 moveDir = _viewCamera.InputToWorldDir(_moveInput);
+        _characterController.Move(moveDir * (speed * Time.deltaTime));
     }
 }
