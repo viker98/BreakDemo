@@ -24,7 +24,7 @@ public class SocketManager : MonoBehaviour
 
     void initSockets()
     {
-        if (_attachSockets == null)
+        if (_attachSockets != null)
         {
             return;
         }

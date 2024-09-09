@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private GamePlayWidget _gameplayWidget;
     private CharacterController _characterController;
     private ViewCamera _viewCamera;
+    private InventoryComponent _inventoryComponent;
 
     private Animator _animator;
     private float _animTurnSpeed;
@@ -33,11 +34,18 @@ public class Player : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+        _inventoryComponent = GetComponent<InventoryComponent>();
         _gameplayWidget = Instantiate(gameplayWidgetPrefab);
         _gameplayWidget.MoveStick.OnInputUpdated += MoveInputUpdated;
         _gameplayWidget.AimStick.OnInputUpdated += AimInputUpdated;
+        _gameplayWidget.AimStick.OnInputClicked += AimInputClicked;
         _viewCamera = Instantiate(viewCameraPrefab);
         _viewCamera.SetFollorParent(transform);
+    }
+
+    private void AimInputClicked(Vector2 inputVal)
+    {
+        _inventoryComponent.EquipNextWeapon();
     }
 
     private void AimInputUpdated(Vector2 inputVal)

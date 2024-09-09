@@ -2,10 +2,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler , IPointerClickHandler
 {
     public delegate void InputUpdatedDelegate(Vector2 inputVal);
     public event InputUpdatedDelegate OnInputUpdated;
+    public event InputUpdatedDelegate OnInputClicked;
+
+
 
     [SerializeField] private RectTransform rangeTransform;
     [SerializeField] private RectTransform thumbStickTransform;
@@ -46,4 +49,8 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         OnInputUpdated.Invoke(offset/_range);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnInputClicked.Invoke(Vector2.zero);
+    }
 }

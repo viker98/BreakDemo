@@ -19,12 +19,10 @@ public class InventoryComponent : MonoBehaviour
             newWeapon.Init(gameObject);
             _weapons.Add(newWeapon);
         }
-
         EquipNextWeapon();
-
     }
 
-    private void EquipNextWeapon()
+    public void EquipNextWeapon()
     {
         if (_weapons.Count == 0) { return; }
 

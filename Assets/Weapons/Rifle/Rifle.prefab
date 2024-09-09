@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttachSocketName: Rifle
+  overrideController: {fileID: 22100000, guid: 8d3f2727b28b50d43b0a410ff8512d93, type: 2}
 --- !u!1001 &2628095445621784656
 PrefabInstance:
   m_ObjectHideFlags: 0

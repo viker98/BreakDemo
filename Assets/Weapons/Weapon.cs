@@ -4,6 +4,8 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
 {
 
     [SerializeField] string AttachSocketName;
+    [SerializeField] AnimatorOverrideController overrideController;
+
 
     public GameObject Owner
     {
@@ -25,6 +27,11 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
     public void Equip()
     {
         gameObject.SetActive(true);
+        Animator ownerAnimator = Owner.GetComponent<Animator>();
+        if (ownerAnimator && overrideController)
+        {
+            ownerAnimator.runtimeAnimatorController = overrideController;
+        }
     }
     public void UnEquip()
     {
