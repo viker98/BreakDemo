@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent (typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
-
+[RequireComponent(typeof(SocketManager))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private GamePlayWidget gameplayWidgetPrefab;
