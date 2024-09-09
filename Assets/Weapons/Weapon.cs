@@ -13,6 +13,13 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
     public void Init(GameObject owner)
     {
         Owner = owner;
+        SocketManager socketManager = owner.GetComponent<SocketManager>();
+        if (socketManager)
+        {
+            socketManager.FindAndAttachToSocket(this);
+        }
+
+        UnEquip();
     }
 
     public void Equip()
