@@ -48,4 +48,6 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
         return gameObject;
     }
 
+    public abstract void Attack();
+
 }

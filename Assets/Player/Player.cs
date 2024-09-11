@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private static readonly int animRightId = Animator.StringToHash("RightAmount");
     private static readonly int animTurnId = Animator.StringToHash("Turn Amount");
     private static readonly int SwitchWeaponID = Animator.StringToHash("Switch Weapon");
+    private static readonly int FireID = Animator.StringToHash("Firing");
 
     private void Awake()
     {
@@ -59,12 +60,19 @@ public class Player : MonoBehaviour
     private void AimInputUpdated(Vector2 inputVal)
     {
         _aimInput = inputVal;
+        _animator.SetBool(FireID, _aimInput != Vector2.zero);
     }
 
     private void MoveInputUpdated(Vector2 inputVal)
     {
         _moveInput = inputVal;
     }
+
+    public void AttackPoint()
+    {
+        _inventoryComponent.FireCurrentActiveWeapon();
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
