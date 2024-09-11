@@ -26,9 +26,10 @@ public class Player : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _aimInput;
 
-    static int animFwdId = Animator.StringToHash("Forward Amount");
-    static int animRightId = Animator.StringToHash("RightAmount");
-    static int animTurnId = Animator.StringToHash("Turn Amount");
+    private static readonly int animFwdId = Animator.StringToHash("Forward Amount");
+    private static readonly int animRightId = Animator.StringToHash("RightAmount");
+    private static readonly int animTurnId = Animator.StringToHash("Turn Amount");
+    private static readonly int SwitchWeaponID = Animator.StringToHash("Switch Weapon");
 
     private void Awake()
     {
@@ -45,8 +46,15 @@ public class Player : MonoBehaviour
 
     private void AimInputClicked(Vector2 inputVal)
     {
-        _inventoryComponent.EquipNextWeapon();
+        _animator.SetTrigger(SwitchWeaponID);
+       // _inventoryComponent.EquipNextWeapon();
     }
+
+    public void WeaponSwitchPoint()
+    {
+        _inventoryComponent?.EquipNextWeapon();
+    }
+
 
     private void AimInputUpdated(Vector2 inputVal)
     {

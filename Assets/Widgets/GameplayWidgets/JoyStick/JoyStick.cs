@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler , IPointerClickHandler
+public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     public delegate void InputUpdatedDelegate(Vector2 inputVal);
     public event InputUpdatedDelegate OnInputUpdated;
@@ -16,6 +16,8 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     [SerializeField] private float deadZone = 0.2f;
 
     private float _range;
+    private bool _bWasDragging;
+
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     {
         rangeTransform.position = eventData.pressPosition;
         thumbStickTransform.position = eventData.pressPosition;
+        _bWasDragging = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -33,9 +36,15 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         thumbStickTransform.localPosition = Vector2.zero;
         rangeTransform.localPosition = Vector2.zero;
         OnInputUpdated.Invoke(Vector2.zero);
+        if (!_bWasDragging)
+        {
+            OnInputClicked?.Invoke(Vector2.zero);
+        }
     }
     public void OnDrag(PointerEventData eventData)
     {
+        _bWasDragging = true;
+
         Vector2 offset = eventData.position - eventData.pressPosition;
         
         offset = Vector2.ClampMagnitude(offset, _range);
@@ -48,9 +57,10 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
         OnInputUpdated.Invoke(offset/_range);
     }
-
+    /*
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnInputClicked.Invoke(Vector2.zero);
+        OnInputClicked?.Invoke(Vector2.zero);
     }
+    */
 }
