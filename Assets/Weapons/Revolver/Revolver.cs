@@ -13,7 +13,7 @@ public class Revolver : Weapon
 
     public override void Attack()
     {
-        GameObject target = _aimingComponent.GetAimTarget(Owner.transform);
+        GameObject target = _aimingComponent.GetAimTarget();
         if (target != null)
         {
             Debug.Log("damaging ", target);
