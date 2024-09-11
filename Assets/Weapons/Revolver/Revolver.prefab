@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttachSocketName: Revolver
   overrideController: {fileID: 22100000, guid: d1ead4168db1c2d4684dfdabfaf256a8, type: 2}
+  damage: 25
 --- !u!114 &7016154227665762896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +67,9 @@ MonoBehaviour:
   aimMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  bOverrides: 1
+  heightOverride: 1.5
+  fwdOffset: 0.5
 --- !u!1 &8766689699096862730
 GameObject:
   m_ObjectHideFlags: 0
