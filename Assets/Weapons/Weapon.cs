@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
 
     [SerializeField] string AttachSocketName;
     [SerializeField] AnimatorOverrideController overrideController;
+    [SerializeField] float attackAnimSpeedMult = 1f;
 
 
     public GameObject Owner
@@ -20,17 +21,19 @@ public abstract class Weapon : MonoBehaviour, ISocketInterface
         {
             socketManager.FindAndAttachToSocket(this);
         }
-
         UnEquip();
+
     }
 
     public void Equip()
     {
         gameObject.SetActive(true);
         Animator ownerAnimator = Owner.GetComponent<Animator>();
+
         if (ownerAnimator && overrideController)
         {
             ownerAnimator.runtimeAnimatorController = overrideController;
+            ownerAnimator.SetFloat("AttackSpeedMult", attackAnimSpeedMult);
         }
     }
     public void UnEquip()

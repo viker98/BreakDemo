@@ -3121,6 +3121,8 @@ GameObject:
   - component: {fileID: 3431155682676947611}
   - component: {fileID: 221567266806998399}
   - component: {fileID: 6225963592436547866}
+  - component: {fileID: 7792486075295289775}
+  - component: {fileID: 4912435304017004969}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -3136,7 +3138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8285962018347556212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 126.0704, y: 0.1920563, z: 45.03772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3216,7 +3218,7 @@ CapsuleCollider:
   m_Radius: 0.56
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.91, z: 0.65}
+  m_Center: {x: 0, y: 0.57, z: 0.03}
 --- !u!114 &6225963592436547866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3231,6 +3233,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   widgetPrefab: {fileID: 2761350383808677646, guid: c9533ec11d80ae940a9e89459ab0d732, type: 3}
   attachTransform: {fileID: 6036312480237708712}
+--- !u!114 &7792486075295289775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9545bddac3f73a478f2d14f21797a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 1
+  awareRange: 1.74
+--- !u!114 &4912435304017004969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdb3886447e4a845ba1e8a0decabad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 1
+  sightRange: 10.16
+  sightPeripheralHalfAngle: 28.2
 --- !u!1 &8324151335334915910
 GameObject:
   m_ObjectHideFlags: 0

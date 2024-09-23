@@ -21,13 +21,11 @@ public class AimingComponent : MonoBehaviour
     [SerializeField] private Transform muzzle;
     [SerializeField] private float aimRange = 10f;
     [SerializeField] private LayerMask aimMask;
-    [SerializeField] private bool bOverrides = true;
+    [SerializeField] private bool bOverridesLocation = true;
+    [SerializeField] private bool bFlattenAim = true;
     [SerializeField] private float heightOverride = 1.5f;
     [SerializeField] private float fwdOffset = 0.5f;
 
-    // remove later lmao ;3
-    private Vector3 _debugAimStart;
-    private Vector3 _debugAimDir;
     public AimResult GetAimResult(Transform aimTransform = null)
     {
         Vector3 aimStart = muzzle.position;
@@ -39,14 +37,18 @@ public class AimingComponent : MonoBehaviour
             aimDir = aimTransform.forward;
         }
 
-        if (bOverrides)
+        if (bFlattenAim)
+        {
+            aimDir.y = 0;
+            aimDir.Normalize();
+        }
+
+        if (bOverridesLocation)
         {
             aimStart.y = heightOverride;
             aimStart += aimDir * fwdOffset;
         }
 
-        _debugAimStart = aimStart;
-        _debugAimDir = aimDir;
 
         GameObject target = null;
 
@@ -56,11 +58,6 @@ public class AimingComponent : MonoBehaviour
         }
 
         return new AimResult(target, aimStart, aimDir);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(_debugAimStart, _debugAimStart + _debugAimDir * aimRange);
     }
 
 }
