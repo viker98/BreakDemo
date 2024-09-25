@@ -5,6 +5,10 @@ using UnityEngine;
 
 public abstract class Sense : MonoBehaviour
 {
+    public delegate void OnSenseUpdatedDelegate(Stimuli stimuli, bool bWasSensed);
+    
+    public event OnSenseUpdatedDelegate OnSenseUpdated;
+
     [SerializeField] private bool bDrawDebug = true;
     [SerializeField] private float forgetTime = 3f;
 
@@ -62,7 +66,7 @@ public abstract class Sense : MonoBehaviour
     {
         yield return new WaitForSeconds(forgetTime);
         _forgettingCoroutines.Remove(stimuli);
-        Debug.Log($"i Just lost track of: {stimuli.gameObject.name}");
+        OnSenseUpdated?.Invoke(stimuli,false);
     }
 
     protected void HandleSensibleStimuli(Stimuli stimuli)
@@ -82,7 +86,7 @@ public abstract class Sense : MonoBehaviour
             return;
         }
 
-        Debug.Log($"i Just sensed: {stimuli.gameObject.name}");
+        OnSenseUpdated?.Invoke(stimuli, true);
     }
 
     private void OnDrawGizmos()

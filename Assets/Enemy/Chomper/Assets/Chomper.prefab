@@ -3125,6 +3125,9 @@ GameObject:
   - component: {fileID: 4912435304017004969}
   - component: {fileID: 987532330358308590}
   - component: {fileID: 6056057387578799877}
+  - component: {fileID: 2376439892915836622}
+  - component: {fileID: 1183438539902919135}
+  - component: {fileID: 4099416303600003539}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -3294,6 +3297,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bDrawDebug: 1
   forgetTime: 3
+  hearingMinVolume: 10
+--- !u!114 &2376439892915836622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767740453bb5bb64ebbfe2c81fa5c736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1183438539902919135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -49380118469748592, guid: 456bea6263106dd4b8ca8f21b739fb3c, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 288226563310747950
+  - rid: 288226563310747969
+  references:
+    version: 2
+    RefIds:
+    - rid: 288226563310747950
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 8285962018347556212}
+    - rid: 288226563310747969
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6490729510767709894
+          m_Value1: 16999333605418357101
+        Name: Waypoints
+        m_Value:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+--- !u!195 &4099416303600003539
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8324151335334915910
 GameObject:
   m_ObjectHideFlags: 0
