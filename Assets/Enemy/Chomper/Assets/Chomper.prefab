@@ -3123,6 +3123,8 @@ GameObject:
   - component: {fileID: 6225963592436547866}
   - component: {fileID: 7792486075295289775}
   - component: {fileID: 4912435304017004969}
+  - component: {fileID: 987532330358308590}
+  - component: {fileID: 6056057387578799877}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -3246,6 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bDrawDebug: 1
+  forgetTime: 3
   awareRange: 1.74
 --- !u!114 &4912435304017004969
 MonoBehaviour:
@@ -3260,8 +3263,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bDrawDebug: 1
-  sightRange: 10.16
-  sightPeripheralHalfAngle: 28.2
+  forgetTime: 3
+  sightRange: 8.46
+  sightPeripheralHalfAngle: 29.4
+--- !u!114 &987532330358308590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a7cebe4c3a4664598d328b0a77a628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 1
+  forgetTime: 3
+--- !u!114 &6056057387578799877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285962018347556212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39ca892be8455144b8250b22d30e8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDrawDebug: 1
+  forgetTime: 3
 --- !u!1 &8324151335334915910
 GameObject:
   m_ObjectHideFlags: 0

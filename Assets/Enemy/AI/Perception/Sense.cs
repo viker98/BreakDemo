@@ -24,7 +24,10 @@ public abstract class Sense : MonoBehaviour
         _registeredStimuliSet.Remove(stimuli);
     }
 
-    protected abstract bool IsStimuliSensable(Stimuli stimuli);
+    protected virtual bool IsStimuliSensable(Stimuli stimuli)
+    {
+        return false;
+    }
 
     private void Update()
     {
