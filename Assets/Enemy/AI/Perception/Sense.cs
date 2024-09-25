@@ -62,7 +62,7 @@ public abstract class Sense : MonoBehaviour
         Debug.Log($"i Just lost track of: {stimuli.gameObject.name}");
     }
 
-    private void HandleSensibleStimuli(Stimuli stimuli)
+    protected void HandleSensibleStimuli(Stimuli stimuli)
     {
         // we can sense it now and before, nothing needs to be done
         if (_currentSensiableStimuliSet.Contains(stimuli))

@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void takeDamage(float newhealth, float delta, float maxHealth)
+    private void takeDamage(float newhealth, float delta, float maxHealth, GameObject instigator)
     {
         Debug.Log($"I took {delta} amt of damage, health is now {newhealth}/{maxHealth}");
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    public delegate void OnHealthChangeDelegate(float newhealth, float delta, float maxHealth);
+    public delegate void OnHealthChangeDelegate(float newhealth, float delta, float maxHealth, GameObject instigator);
     
     public event OnHealthChangeDelegate onHealthChange;
     public event OnHealthChangeDelegate OnTakenDamge;
@@ -18,7 +18,7 @@ public class HealthComponent : MonoBehaviour
 
     }
 
-    public void ChangeHealth(float amt)
+    public void ChangeHealth(float amt, GameObject instigator)
     {
         if (amt == 0 || _health == 0)
         {
@@ -28,12 +28,12 @@ public class HealthComponent : MonoBehaviour
 
         if (amt < 0)
         {
-            OnTakenDamge?.Invoke(_health, amt, maxHealth);
+            OnTakenDamge?.Invoke(_health, amt, maxHealth, instigator);
         }
-        onHealthChange?.Invoke(_health, amt, maxHealth);
+        onHealthChange?.Invoke(_health, amt, maxHealth, instigator);
         if (_health <= 0)
         {
-            OnDead.Invoke();
+            OnDead?.Invoke();
         }
     }
 }
