@@ -9,13 +9,21 @@ public class HealthComponent : MonoBehaviour
     public event OnHealthChangeDelegate OnTakenDamge;
     public event Action OnDead;
 
-    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float _maxHealth = 100;
     private float _health;
 
     private void Awake()
     {
-        _health = maxHealth;
+        _health = _maxHealth;
 
+    }
+    public float GetHealth()
+    {
+        return _health;
+    }
+    public float GetMaxHealth()
+    {
+        return _maxHealth;
     }
 
     public void ChangeHealth(float amt, GameObject instigator)
@@ -24,13 +32,13 @@ public class HealthComponent : MonoBehaviour
         {
             return;
         }
-        _health = Mathf.Clamp(_health + amt, 0 , maxHealth);
+        _health = Mathf.Clamp(_health + amt, 0 , _maxHealth);
 
         if (amt < 0)
         {
-            OnTakenDamge?.Invoke(_health, amt, maxHealth, instigator);
+            OnTakenDamge?.Invoke(_health, amt, _maxHealth, instigator);
         }
-        onHealthChange?.Invoke(_health, amt, maxHealth, instigator);
+        onHealthChange?.Invoke(_health, amt, _maxHealth, instigator);
         if (_health <= 0)
         {
             OnDead?.Invoke();

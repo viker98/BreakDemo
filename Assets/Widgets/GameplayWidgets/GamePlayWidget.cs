@@ -1,9 +1,9 @@
 using UnityEngine;
-
 public class GamePlayWidget : Widget
 {
     [SerializeField] private JoyStick moveStick;
     [SerializeField] private JoyStick aimStick;
+
     public JoyStick MoveStick 
     {
         get => moveStick;
@@ -16,15 +16,13 @@ public class GamePlayWidget : Widget
         private set => aimStick = value;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void SetOwner(GameObject newOwner)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.SetOwner(newOwner);
+        Widget[] allWidgets = GetComponentsInChildren<Widget>();
+        foreach(Widget childWidget in allWidgets)
+        {
+            childWidget.SetOwner(newOwner);
+        }
     }
 }

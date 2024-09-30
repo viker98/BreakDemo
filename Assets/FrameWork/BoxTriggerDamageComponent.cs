@@ -6,7 +6,7 @@ public class BoxTriggerDamageComponent : DamageComponent
 {
     [SerializeField] float damage = 10;
 
-    HashSet<GameObject> _currentOverlappingTargets;
+    HashSet<GameObject> _currentOverlappingTargets = new HashSet<GameObject>();
     public override void DoDamage()
     {
         foreach(GameObject target in _currentOverlappingTargets)
@@ -17,6 +17,7 @@ public class BoxTriggerDamageComponent : DamageComponent
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"{other.gameObject.name} detected");
         if (ShouldDamage(other.gameObject))
         {
             _currentOverlappingTargets.Add(other.gameObject);

@@ -6,6 +6,7 @@ public class HealthBar : ValueGauge
     public override void SetOwner(GameObject newOwner)
     {
         base.SetOwner(newOwner);
+
         HealthComponent ownerHealthComponent = newOwner.GetComponent<HealthComponent>();
         if (ownerHealthComponent)
         {

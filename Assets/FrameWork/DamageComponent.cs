@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class DamageComponent : MonoBehaviour
@@ -18,6 +19,7 @@ public abstract class DamageComponent : MonoBehaviour
 
     protected void ApplyDamage(GameObject target, float damageAmt)
     {
+        Debug.Log($"Damaging: {target.name}");
         HealthComponent targetHealthComponent = target.GetComponent<HealthComponent>();
         if (targetHealthComponent)
         {

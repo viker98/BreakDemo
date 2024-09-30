@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, ITeamInterface
     private Vector2 _moveInput;
     private Vector2 _aimInput;
 
+
     private static readonly int animFwdId = Animator.StringToHash("Forward Amount");
     private static readonly int animRightId = Animator.StringToHash("RightAmount");
     private static readonly int animTurnId = Animator.StringToHash("Turn Amount");
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour, ITeamInterface
         _gameplayWidget.MoveStick.OnInputUpdated += MoveInputUpdated;
         _gameplayWidget.AimStick.OnInputUpdated += AimInputUpdated;
         _gameplayWidget.AimStick.OnInputClicked += AimInputClicked;
+        _gameplayWidget.SetOwner(gameObject);
         _viewCamera = Instantiate(viewCameraPrefab);
         _viewCamera.SetFollorParent(transform);
     }
