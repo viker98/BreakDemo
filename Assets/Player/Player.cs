@@ -3,12 +3,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent (typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SocketManager))]
 [RequireComponent(typeof(InventoryComponent))]
 [RequireComponent(typeof(HealthComponent))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITeamInterface
 {
     [SerializeField] private GamePlayWidget gameplayWidgetPrefab;
     [SerializeField] private float speed = 10f;
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] ViewCamera viewCameraPrefab;
     [SerializeField] private float animTurnLerpScale = 5f;
 
-
+    [SerializeField] int TeamID = 0;
     private GamePlayWidget _gameplayWidget;
     private CharacterController _characterController;
     private ViewCamera _viewCamera;
@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
     private static readonly int SwitchWeaponID = Animator.StringToHash("Switch Weapon");
     private static readonly int FireID = Animator.StringToHash("Firing");
 
+    public int GetTeamID()
+    {
+        return TeamID;
+    }
+
+    
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
